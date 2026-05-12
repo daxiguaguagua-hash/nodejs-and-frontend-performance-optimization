@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-and-frontend-performance-optimization",
+  "version": "1.0.0",
+  "description": "时间超充足就**学深、练透、做项目、能面试**，每天按「上午理论 + 下午实操 + 晚上总结复盘」安排，直接照做即可。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "autocannon": "^8.0.0"
+  }
+}
