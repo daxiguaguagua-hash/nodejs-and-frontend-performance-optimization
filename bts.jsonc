@@ -1,0 +1,18 @@
+// perf-monorepo — 前端性能监控 SDK + BFF + Dashboard
+//
+// 技术栈声明文件，由 office-hours 讨论产出
+// Stack Builder: https://www.better-t-stack.dev/new
+
+{
+  "$schema": "https://r2.better-t-stack.dev/schema.json",
+  "version": "3.25.5",
+  "createdAt": "2026-05-14T00:00:00.000Z",
+  "backend": "hono",
+  "runtime": "node",
+  "frontend": ["react-router"],
+  "database": "postgres",
+  "orm": "drizzle",
+  "addons": ["turborepo"],
+  "packageManager": "pnpm",
+  "dbSetup": "docker"
+}

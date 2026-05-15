@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slow LCP Demo</title>
+  <style>
+    /* 故意制造慢 LCP：大图 + 阻塞资源 */
+    body { font-family: system-ui; margin: 0; }
+  </style>
+  <!-- 阻塞渲染的同步脚本 -->
+  <script src="data:text/javascript,console.log('blocking')"></script>
+</head>
+<body>
+  <h1>Slow LCP Demo</h1>
+  <!-- LCP 元素：大图延迟加载 -->
+  <img src="https://picsum.photos/1200/800" width="1200" height="800"
+       loading="lazy" alt="Large hero image" />
+  <p>This page intentionally has slow LCP for testing @perf/browser-sdk</p>
+</body>
+</html>

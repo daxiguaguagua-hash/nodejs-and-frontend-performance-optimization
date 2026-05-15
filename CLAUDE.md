@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Docs Lookup Priority
+
+**查库/框架文档时，context7 优先于 WebSearch：**
+
+1. `mcp__plugin_everything-claude-code_context7__resolve-library-id` → 解析库名得到 library ID
+2. `mcp__plugin_everything-claude-code_context7__query-docs` → 用 library ID 查文档
+3. 以上两步都查不到时，才 fallback 到 WebSearch
+
+context7 的代码示例质量、响应速度、结构化程度都优于通用搜索引擎。
+
 ## Project Purpose
 
 A 7-day intensive learning curriculum for Node.js + frontend performance optimization, covering memory management, stress testing, leak detection, Buffer/Stream, browser rendering, and Core Web Vitals.
@@ -47,12 +57,59 @@ This is a **learning project**, not production code. The user is studying under 
 
 ## Mental Models Already Taught
 
-## No Build System Yet
+## Monorepo Structure
 
-This repo currently has no `package.json`, dependencies, or source files. When code is added:
-- Prefer `npm` as package manager
-- Use `node --inspect` + Chrome DevTools for memory profiling
-- Use `wrk` for HTTP benchmarking, `clinic.js` for performance diagnostics
+```
+perf-monorepo/
+├── apps/
+│   ├── server/          # @perf/server — Hono BFF, metrics ingestion, dashboard API
+│   └── dashboard/       # @perf/dashboard — React SPA, performance monitoring UI
+├── packages/
+│   └── browser-sdk/     # @perf/browser-sdk — frontend performance monitoring SDK
+├── course/              # 学习资料 day01~day17
+│   ├── day01-memory/
+│   ├── day02-stress-test/
+│   ├── day03-leak-tools/
+│   └── TODO.md
+├── demos/               # 故意制造性能问题的测试页面
+├── bts.jsonc            # better-t-stack 技术栈声明
+├── .mcp.json            # BTS MCP + context7 — 将项目暴露为 MCP server
+├── turbo.json
+├── pnpm-workspace.yaml
+└── tsconfig.base.json
+```
+
+## Tech Stack
+
+- **Package manager**: pnpm (workspaces)
+- **Build system**: Turborepo
+- **Backend**: Hono (BFF) + Drizzle ORM + PostgreSQL (Docker)
+- **Frontend**: React 19 + React Router 7 + Vite
+- **SDK**: TypeScript, zero framework dependencies
+- **Formatting/Lint**: Biome (when available)
+- **MCP**: better-t-stack (`pnpm dlx create-better-t-stack@latest mcp`) + context7 (docs lookup)
+
+## Course Plan (17 Days)
+
+| D | Topic | Package |
+|---|-------|---------|
+| D1 | 内存管理 + GC | course/ |
+| D2 | 压力测试 wrk | course/ |
+| D3 | 内存泄漏排查 | course/ |
+| D4 | EventEmitter + 错误处理 | browser-sdk (插件系统) |
+| D5 | Buffer & Stream | server (高吞吐ingestion) |
+| D6 | Hono + 中间件 | server (BFF骨架) |
+| D7 | 前端性能原理 | browser-sdk (采集层) |
+| D8 | Web Vitals 实现 | browser-sdk (核心采集) |
+| D9 | 错误追踪 + 行为 + 自定义事件 | browser-sdk (完整功能) |
+| D10 | React Dashboard | dashboard |
+| D11 | SSE 实时推送 | server + dashboard |
+| D12 | 限流 + 重试 + 超时 | server |
+| D13 | 日志系统 pino | server |
+| D14 | 测试 + 文档 | 全项目 |
+| D15 | worker_threads | server |
+| D16 | 全链路优化实战 | 全项目 |
+| D17 | 面试冲刺 + 知识整合 | course/ |
 
 ## Key Tools for This Domain
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout Shift Demo</title>
+  <style>
+    /* 故意制造 CLS：无尺寸的图片 + 动态注入广告 */
+    .ad { background: #eee; min-height: 0; }
+    .ad.loaded { min-height: 250px; background: #f0c040; }
+  </style>
+</head>
+<body>
+  <h1>Layout Shift Demo</h1>
+  <p>Content above the fold...</p>
+  <!-- 无预设尺寸的图片 — 加载时会撑开布局 -->
+  <img src="https://picsum.photos/800/600" alt="No dimensions set">
+  <!-- 动态注入广告 — 推挤下方内容 -->
+  <div class="ad" id="ad"></div>
+  <p>Content below the ad — this will shift down when ad loads</p>
+  <script>
+    setTimeout(() => {
+      document.getElementById('ad').classList.add('loaded');
+      document.getElementById('ad').textContent = 'AD: Buy Now!';
+    }, 2000);
+  </script>
+</body>
+</html>
