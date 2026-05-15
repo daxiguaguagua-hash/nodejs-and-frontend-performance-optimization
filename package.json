@@ -13,5 +13,13 @@
     "turbo": "^2.4.0",
     "typescript": "^5.8.0"
   },
-  "packageManager": "pnpm@10.33.2"
+  "packageManager": "pnpm@10.33.2",
+  "dependencies": {
+    "gbrain": "link:gbrain"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "course/*"
+  ]
 }

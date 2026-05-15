@@ -3,6 +3,10 @@
     "better-t-stack": {
       "command": "pnpm",
       "args": ["dlx", "create-better-t-stack@latest", "mcp"]
+    },
+    "gbrain": {
+      "command": "bun",
+      "args": ["gbrain", "serve"]
     }
   }
 }
