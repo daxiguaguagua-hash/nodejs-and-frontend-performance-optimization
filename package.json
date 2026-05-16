@@ -15,6 +15,7 @@
   },
   "packageManager": "pnpm@10.33.2",
   "dependencies": {
+    "express": "^5.2.1",
     "gbrain": "link:gbrain"
   },
   "workspaces": [

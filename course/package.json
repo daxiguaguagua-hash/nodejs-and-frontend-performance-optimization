@@ -1,5 +1,8 @@
 {
   "name": "@perf/course",
   "private": true,
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
 }

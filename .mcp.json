@@ -6,7 +6,11 @@
     },
     "gbrain": {
       "command": "bun",
-      "args": ["gbrain", "serve"]
+      "args": ["gbrain", "serve"],
+      "env": {
+        "GBRAIN_SOURCE": "perf-monorepo",
+        "MCP_STDIO": "1"
+      }
     }
   }
 }

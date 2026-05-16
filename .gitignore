@@ -3,3 +3,4 @@ dist/
 .turbo/
 .next/
 *.tsbuildinfo
+graphify-out/
